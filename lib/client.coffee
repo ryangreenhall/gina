@@ -1,7 +1,7 @@
 class HttpClient
   get: (server, url, headers, endCallback) ->
     server.start ->
-      request = require('http').createClient(8888, "localhost").request("GET", url, headers)
+      request = require('http').createClient(server.port, "localhost").request("GET", url, headers)
       request.on 'response', (response) ->
         response.data = ''
         response.on 'end', ->

@@ -1,24 +1,26 @@
-app = require("../lib/gina_dsl")
+gina = require("../lib/gina_dsl")
 
 describe "How to use gina", ->
 
   class Application
 
     constructor: ->
+      @port = 8888
       @server = require('http').createServer (req, res) ->
         res.writeHead 200, { 'Content-Type': 'text/plain' }
         res.end 'Hello World'
 
     start: (callback) ->
-      @server.listen(8888, 'localhost', callback)
+      @server.listen(@port, 'localhost', callback)
 
     stop: ->
       @server.close()
-      
-  application = new Application()
+  
+  gina.register new Application()
   
   it "can get a resource", ->
-    app.get(application, "/", {}, (response) ->
+    
+    get("/", {}, (response) ->
       expect(response.data).toEqual("Hello World")
       expect(response.statusCode).toEqual(200)
     )
