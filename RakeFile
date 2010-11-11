@@ -1,7 +1,6 @@
 task :default => [:specs]
   
 task :specs do
-  ENV['REDIRECT_ENV'] = 'test'
   sh 'node run.specs.js'
 end
 
