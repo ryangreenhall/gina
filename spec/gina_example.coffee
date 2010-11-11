@@ -21,7 +21,8 @@ describe "How to use gina", ->
   it "can get a resource", ->
     
     get("/", {}, (response) ->
-      expect(response.data).toEqual("Hello World")
-      expect(response.statusCode).toEqual(200)
+      expect(response.data).toEqual "Hello World"
+      expect(response.statusCode).toEqual 200
     )
+    
       
