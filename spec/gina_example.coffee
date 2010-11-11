@@ -1,4 +1,4 @@
-gina = require("../lib/gina_dsl")
+gina = require("../lib/gina")
 
 describe "How to use gina", ->
 
