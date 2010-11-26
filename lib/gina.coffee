@@ -16,5 +16,11 @@ global.post = (url, headers, callback) ->
      callback(res)
      asyncSpecDone()
   asyncSpecWait()
+  
+global.delete_ = (url, headers, callback) ->
+  client.delete_ application, url, headers, (res) ->
+     callback(res)
+     asyncSpecDone()
+  asyncSpecWait()
 
   
