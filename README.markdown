@@ -1,8 +1,14 @@
 #Gina
 
-Provides a simple DSL for expressing the behaviour of web apps written in nodejs.
+Provides a simple DSL written in CoffeScript for expressing the behaviour of web apps written in nodejs.
 
 ## Gina in action
+
+To use Gina to test your node app you simply need to wrap your server in an object with the following functions:
+
+  * port - Provides the port number that your app is running on
+  * start - Starts your node app
+  * stop - Stops your node app
 
     gina = require("../lib/gina")
 
