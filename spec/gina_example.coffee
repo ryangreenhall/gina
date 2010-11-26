@@ -7,22 +7,34 @@ describe "How to use gina", ->
     constructor: ->
       @port = 8888
       @server = require('http').createServer (req, res) ->
+        responses = 
+          GET: "Getting Hello world"
+          POST: "Posting to Hello world"
+        
         res.writeHead 200, { 'Content-Type': 'text/plain' }
-        res.end 'Hello World'
+        res.end responses[req.method]
 
     start: (callback) ->
       @server.listen(@port, 'localhost', callback)
 
     stop: ->
       @server.close()
-  
-  gina.register new Application()
-  
-  it "can get a resource", ->
+      
+  beforeEach () ->
+    gina.register new Application()
     
+  it "can get a resource", ->
     get("/", {}, (response) ->
-      expect(response.data).toEqual "Hello World"
-      expect(response.statusCode).toEqual 200
+       expect(response.data).toEqual "Getting Hello world"
+       expect(response.statusCode).toEqual 200
     )
+    
+  it "can post to a resource", ->
+    post("/", {}, (response) ->
+      expect(response.data).toEqual "Posting to Hello world"
+    )
+  
+  
+    
     
       

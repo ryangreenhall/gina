@@ -11,3 +11,10 @@ global.get = (url,headers,callback) ->
      asyncSpecDone()
   asyncSpecWait()
   
+global.post = (url, headers, callback) ->
+  client.post application, url, headers, (res) ->
+     callback(res)
+     asyncSpecDone()
+  asyncSpecWait()
+
+  
