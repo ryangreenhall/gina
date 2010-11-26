@@ -11,6 +11,7 @@ describe "How to use gina", ->
           GET: "Getting Hello world"
           POST: "Posting to Hello world"
           DELETE: "Deleting..."
+          PUT: "Putting..."
         
         res.writeHead 200, { 'Content-Type': 'text/plain' }
         res.end responses[req.method]
@@ -39,8 +40,8 @@ describe "How to use gina", ->
     delete_("/", {}, (response) ->
       expect(response.data).toEqual "Deleting..."
     )
-  
-  
     
-    
-      
+  it "can put a resource", ->
+    put("/", {}, (response) ->
+      expect(response.data).toEqual "Putting..."
+    )      

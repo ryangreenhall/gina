@@ -7,9 +7,9 @@ exports.register = (app) ->
 
 global.get = (url,headers,callback) ->
   client.get application, url, headers, (res) ->
-     callback(res)
-     asyncSpecDone()
-  asyncSpecWait()
+      callback(res)
+      asyncSpecDone()
+   asyncSpecWait()
   
 global.post = (url, headers, callback) ->
   client.post application, url, headers, (res) ->
@@ -22,5 +22,12 @@ global.delete_ = (url, headers, callback) ->
      callback(res)
      asyncSpecDone()
   asyncSpecWait()
+  
+global.put = (url, headers, callback) ->
+  client.put application, url, headers, (res) ->
+    callback(res)
+    asyncSpecDone()
+  asyncSpecWait()
+   
 
   
